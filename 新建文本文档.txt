@@ -1,0 +1,10 @@
+git status 查看修改的内容
+git add .  添加新创建的内容
+git commit -m "写注释内容"
+git checkout dev  切换到dev分支
+git merge creatComponents --no-ff  向dev合并添加的内容
+:q  退出
+git push origin dev  向github远程端提交内容
+git branch  查看有多少分支
+git branch -d creatComponents  删除没用的分支
+git checkout -b setData   创建新的分支
