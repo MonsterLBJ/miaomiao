@@ -1,3 +1,4 @@
+git status 查看修改的内容
 git add .  添加新创建的内容
 git commit -m "写注释内容"
 git checkout dev  切换到dev分支
