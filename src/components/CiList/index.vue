@@ -1,6 +1,8 @@
 <template>
     <div id="content">
 			<div class="cinema_body">
+				<Loading v-if="isLoading"></Loading>
+				<Scroller v-else :handleToScroll="handleToScroll" :handleToTouchEnd="handleToTouchEnd">
 				<ul>
 					<li v-for="item in cinemas" :key="item.id">
 						<div>
@@ -16,6 +18,7 @@
        					</div>
 					</li>
 				</ul>
+				</Scroller>
 			</div>
 		</div>      
 
@@ -23,16 +26,24 @@
 
 <script>
 export default {
-	name:'ciList',
+	name:'CiList',
 	data(){
 		return{
-			cinemas:[]
+			cinemas:[],
+			isLoading:true,
+			prevCityId: -1
 		}
 	},
-	mounted(){
-		this.axios.get('/api/cinemaList?cityId=230').then((res)=>{
+	activated(){
+		var cityId = this.$store.state.City.id;
+		if(this.prevCityId === cityId){
+			return;
+		}
+		this.isLoading = true;
+		this.axios.get('/api/cinemaList?cityId='+cityId).then((res)=>{
 			var msg = res.data.msg;
 			if(msg === 'ok'){
+				this.isLoading = false;
 				this.cinemas = res.data.data.cinemas;
 			}
 		})
@@ -66,6 +77,12 @@ export default {
 			}
 			return '';
 		},			
+	},
+	methods:{
+		handleToScroll(pos){
+        },
+		handleToTouchEnd(pos){
+		}
 	}
 }
 </script>
