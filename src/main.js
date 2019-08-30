@@ -6,9 +6,18 @@ import store from './stores'
 import axios from 'axios'
 Vue.prototype.axios = axios;
 
+import Scroller from '../src/components/Scroller'
+Vue.component('Scroller',Scroller);
+
+import Loading from '../src/components/Loading'
+Vue.component('Loading',Loading)
+
 Vue.filter('setWH',(url,arg)=>{
   return url.replace(/w\.h/,arg);
 }),
+
+
+
 
 Vue.config.productionTip = false
 
