@@ -3,6 +3,12 @@ import App from './App.vue'
 import router from './routers'
 import store from './stores'
 
+import Router from 'vue-router'
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
+
 import axios from 'axios'
 Vue.prototype.axios = axios;
 
@@ -15,6 +21,8 @@ Vue.component('Loading',Loading)
 Vue.filter('setWH',(url,arg)=>{
   return url.replace(/w\.h/,arg);
 }),
+
+
 
 
 
