@@ -1,6 +1,6 @@
 <template>
     <div id="main">
-        <Header title="喵喵影院"/>
+        <Header title="影院"/>
         <div class="cinema_menu">
 				<div class="city_switch">
 					全城 <i class="iconfont icon-lower-triangle"></i>
